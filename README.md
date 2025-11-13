@@ -64,6 +64,6 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### 14. Do not introduce novel idea in a script, start a new project; Do not let your project do anything trivial, write a script.
 > Respect the boundaries of scale. A "script" should be a simple, single-purpose tool. If you find yourself adding complex, novel functionality, it's time to start a proper "project" with a structured architecture. Conversely, avoid over-engineering; trivial tasks should be solved with simple scripts, not within a larger project.
 
-**15. Transformers always template themselves; keep in mind that do one single task in one chat session, and the format should be right with first attempt.**
+### 15. Transformers always template themselves; keep in mind that do one single task in one chat session, and the format should be right with first attempt.
 > AI language models naturally structure responses based on patterns they've learned. When working with AI assistants, approach each chat session with a single, focused objective. Structure your initial prompt to be clear and comprehensive enough that the AI produces properly formatted, complete output on the first try, rather than requiring multiple rounds of formatting corrections.
 
