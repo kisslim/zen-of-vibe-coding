@@ -64,4 +64,4 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### 14. Do not introduce novel idea in a script, start a new project; Do not let your project do anything trivial, write a script.
 > Respect the boundaries of scale. A "script" should be a simple, single-purpose tool. If you find yourself adding complex, novel functionality, it's time to start a proper "project" with a structured architecture. Conversely, avoid over-engineering; trivial tasks should be solved with simple scripts, not within a larger project.
 
-I hope this corrected version properly captures the intended meaning of tenet 13. The emphasis is now on the creative seed of a novel idea leading to expansive AI-generated work that cannot be reduced back to its original form.
+### 15. Tranformers always template themselves; keep in mind that do one single task in one chat session, and the format should be right with first attempt.
