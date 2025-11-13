@@ -17,5 +17,5 @@
 8. **A script becomes a project when AI cannot fix it greedily.**
 9. **The internet is a distraction - code locally, think globally.**
 10. **Your AI lives in a terminal, but your terminal should be everywhere.**
-11. **Your AI should never change in one project and always act as a pure function.**
+11. **Your AI should never change in one project and always act as a pure function with no side effects and random outputs.**
 12. **Do not trust your AI service provider unless your are the provider itself.**
