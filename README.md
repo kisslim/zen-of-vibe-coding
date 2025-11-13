@@ -70,6 +70,10 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### 16. Leave them in your CI workflow.
 > This tenet completes the logical sequence begun in Tenet 15, providing the essential counterpart: while generated artifacts do not belong in the codebase, they absolutely belong in the automated, ephemeral context of a Continuous Integration pipeline. The CI system is the designated "kitchen" where the raw ingredients of your source code and prompts are transformed into the final "meal" of deployable artifacts. This clean separation of concerns is vital. The version control system remains a sacred space for human- and AI-readable source—the definitive record of intent and design. The CI system, by contrast, is the dynamic factory floor: it compiles, tests, and packages with deterministic precision, then discards the outputs after their immediate use or archives them as versioned releases. This practice guarantees that every commit can be faithfully rebuilt from its true sources, enforces build hygiene, and prevents the subtle corruption that occurs when hand-crafted source and machine-generated output intermingle. By institutionalizing this separation, you create a self-documenting, reproducible, and scalable development process where the vibes of creation are permanently captured, and the mechanics of compilation are properly automated.
 
+### 17. A script becomes a project when AI cannot fix it in one attempt.
+
+> This tenet identifies the natural boundary between simple automation and complex software engineering. A script—by its nature—is a linear, focused piece of code with a single responsibility and minimal internal state. Its problems are typically localized and syntactic; an AI can comprehend its entire context and rectify issues in a single interaction. When this is no longer true, when the AI requires multiple rounds of clarification, produces conflicting suggestions, or fixes one issue while introducing another, you have crossed a threshold. The code has accrued *conceptual weight*: it now contains emergent properties, hidden dependencies, or architectural nuances that cannot be captured in a single context window. This is the moment a script becomes a project. It signals that the solution now requires *design*—modularization, explicit interfaces, documentation, and tests—rather than just code. The vibe coder must recognize this transition and shift from tactical prompting to strategic system design. This is not a failure of the AI, but a natural evolution that demands a more disciplined approach, invoking earlier tenets about verification, explicit intent, and the perils of complexity. It is the system's way of telling you that it has outgrown its initial premise.
+
 ## Draft
 
 ### 4. Trust the types, but verify the proofs.
@@ -79,8 +83,6 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### 6. Prove code with symbolic execution, prove design with Coq.
 
 ### 7. Tests are cheap, but manual verification is priceless.
-
-### 8. A script becomes a project when AI cannot fix it greedily.
 
 ### 9. The internet is a distraction - code locally, think globally.
 
