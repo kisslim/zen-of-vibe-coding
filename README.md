@@ -20,4 +20,4 @@
 11. **Your AI should never change in one project and always act as a pure function with no side effects and random outputs.**
 12. **Do not trust your AI service provider unless your are the provider itself.**
 13. **A novel idea emerges good project written by AI which can not be losslessly compressed into idea with same length again with AI without that good idea.**
-14. **Do not introduce novel idea in a script, Do not let your project do something trivial. **
+14. **Do not introduce novel idea in a script, Do not let your project do something trivial.**
