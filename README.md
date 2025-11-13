@@ -4,8 +4,6 @@
 
 **Vibe Coding** is an emerging software development practice where developers use natural language prompts to guide AI in generating, refining, and debugging code. [Coined by AI researcher Andrej Karpathy](https://x.com/karpathy/status/1886192184808149383) in early 2025, it represents a shift from writing code line-by-line to directing an AI assistant through a conversational process. This approach allows the developer to focus on the overarching goal and application design, while the AI handles the implementation details.
 
-Vibe coding generally manifests in two forms: "pure" vibe coding for rapid ideation or throwaway projects, and "responsible AI-assisted development," where the developer acts as a guide and maintains full ownership by reviewing, testing, and understanding all generated code.
-
 The following principles adapt the timeless wisdom of the Zen of Python for this new paradigm.
 
 ## The Core Principles
@@ -60,9 +58,10 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### 12. Do not trust your AI service provider unless you are the provider itself.
 > Be aware that the companies providing AI coding tools may change their models, pricing, or features in ways that could disrupt your workflow or project. For ultimate control and stability, consider self-hosting AI models where feasible.
 
-### 13. A novel idea emerges good project written by AI which can not be losslessly compressed into idea with same length again by any AI without that novel idea.
-> A truly novel and valuable software project created with AI will contain insights and structures that are not fully captured by its original short description. The final implementation embodies a form of irreducibly complex knowledge that cannot be perfectly reverse-engineered back into a simple prompt of the same size.
+### 13. A novel idea leads to a good project written by AI which cannot be losslessly compressed into an idea with same length again by any AI without that novel idea.
+> A truly novel and valuable idea serves as the seed for a substantial AI-generated project. The resulting implementation contains emergent complexity and insights that cannot be perfectly reverse-engineered back into the original brief. The project becomes more than the sum of its prompt—it embodies knowledge and structure that cannot be compressed back into the original idea's form without losing essential value.
 
 ### 14. Do not introduce novel idea in a script, start a new project; Do not let your project do anything trivial, write a script.
 > Respect the boundaries of scale. A "script" should be a simple, single-purpose tool. If you find yourself adding complex, novel functionality, it's time to start a proper "project" with a structured architecture. Conversely, avoid over-engineering; trivial tasks should be solved with simple scripts, not within a larger project.
 
+I hope this corrected version properly captures the intended meaning of tenet 13. The emphasis is now on the creative seed of a novel idea leading to expansive AI-generated work that cannot be reduced back to its original form.
