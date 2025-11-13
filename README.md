@@ -43,6 +43,12 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### 7. Thinking mode is not a waste of time. Do not rush to fix your prompts under instruct mode.
 > In the rapid, transactional cycle of instruct mode—where a prompt is given and code is immediately generated—lies the trap of reactive debugging. This tenet champions the critical, often invisible, work of "thinking mode": the deliberate pause to reflect, diagnose, and strategize. Rushing to tweak and re-tweak prompts based on surface-level errors is like rearranging deck chairs on the Titanic; it addresses symptoms, not the underlying architectural misalignment. True efficiency is found by stepping back to analyze why the AI misinterpreted the intent, to reconsider the problem's fundamental structure, or to design a more coherent system abstraction. This contemplative state is where the most significant breakthroughs in clarity and design occur. It is the difference between patching a leak and re-engineering the plumbing. By valuing thinking mode, the vibe coder invests in a deeper, shared understanding with the AI, leading to foundational solutions that require far less correction over time. It is the recognition that the most powerful prompt is born not from haste, but from insight.
 
+### 8. Your AI should never change in one project and always act as a pure function with no side effects and random outputs.
+> Consistency is the bedrock of reliable AI-assisted development. This tenet establishes that within a single project, your AI assistant must maintain a stable personality, knowledge base, and reasoning pattern—behaving as a pure function that produces identical outputs given identical inputs. Randomness, drifting context, or evolving interpretation patterns introduce unpredictable side effects that fracture codebase coherence and undermine the collaborative rhythm between developer and AI. When an AI's behavior fluctuates, what worked in one session may break in the next, creating maintenance nightmares and destroying the predictable patterns that make vibe coding scalable. This principle demands careful management of AI context windows, version consistency, and prompt hygiene to ensure that your AI collaborator provides deterministic, reproducible results. By treating the AI as a pure function—consistent, predictable, and free from hidden state changes—you create a development environment where trust can be established, patterns can be reinforced, and the system's behavior becomes comprehensible rather than magical.
+
+### 9. Finetune the compiler, do not polish the code.
+> In traditional programming, immense effort is often spent on manual code refinement—optimizing, formatting, and restructuring to achieve marginal gains. In the age of AI-assisted development, this represents a misallocation of attention. This tenet advocates for a fundamental shift: instead of endlessly polishing individual code artifacts, invest in optimizing the system that generates and validates them. The "compiler" here represents the entire toolchain—your AI model, its context, your prompt patterns, your testing frameworks, and your build processes. By refining these core systems, you create leverage that improves every line of code generated thereafter. A well-tuned AI with clear context and effective validation will consistently produce better output than manual polishing could achieve. This approach embraces the scalable nature of AI assistance: investing one hour in improving your prompt templates, test suites, or AI configuration can save hundreds of hours of manual code review and refactoring. It recognizes that in vibe coding, the most valuable craftsmanship lies not in hand-polishing stones, but in building better quarries.
+
 ## Draft
 
 ### 4. Trust the types, but verify the proofs.
@@ -59,22 +65,18 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 
 ### 10. Your AI lives in a terminal, but your terminal should be everywhere.
 
-### 11. Your AI should never change in one project and always act as a pure function with no side effects and random outputs.
-
 ### 12. Do not trust your AI service provider unless you are the provider itself.
 
 ### 13. A novel idea leads to a good project written by AI which cannot be losslessly compressed into an idea with same length again by any AI without that novel idea.
 
 ### 14. Do not introduce novel idea in a script, start a new project; Do not let your project do anything trivial, write a script.
 
-### 15. Transformers always template themselves; keep in mind that do one single task in one chat session, and the format should be right with first attempt.
+### 15. Transformers always template themselves; keep in mind that do one single task in one chat session, and you should not continue the chat if the output format is not right.
 
 
 ### 16. Small models are much more powerful than big models while sitting in your CI workflow.
 
 ### 17. Large language models are too large to be a compiler.
-
-### 18. Finetune the compiler, do not polish the code.
 
 ### 19. Never commit compiler output to your codebase.
 
