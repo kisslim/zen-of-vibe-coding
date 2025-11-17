@@ -1,0 +1,10 @@
+vibe-coder/
+├── main.py
+├── vibe_coder/
+│   ├── __init__.py
+│   ├── core.py
+│   ├── terminal.py
+│   ├── arch_linux.py
+│   └── prompts.py
+├── requirements.txt
+└── README.md
