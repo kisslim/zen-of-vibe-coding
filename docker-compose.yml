@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  vibe-coder:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_MODEL=deepseek-r1:8b
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+  # Tenet 10: Small models for CI tasks
+  ci-helper:
+    build: .
+    command: python .github/scripts/run_vibe_tests.py
+    profiles: ["ci"]

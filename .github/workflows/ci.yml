@@ -1,0 +1,203 @@
+name: Vibe Coder CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0' # Weekly Sunday at midnight
+
+env:
+  OLLAMA_MODEL: "deepseek-r1:8b"
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # Tenet 10: Small models are much more powerful than big models while sitting in your CI workflow
+  code-quality:
+    name: Code Quality & Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff mypy bandit safety
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Tenet 20: Trust the types told by your compiler
+      - name: Type checking with MyPy
+        run: |
+          mypy vibe_coder/ --ignore-missing-imports --strict
+
+      # Tenet 24: Tests are cheap
+      - name: Static analysis with Ruff
+        run: |
+          ruff check vibe_coder/
+          ruff format vibe_coder/ --check
+
+      - name: Security scan with Bandit
+        run: |
+          bandit -r vibe_coder/ -f json -o bandit-report.json || true
+
+      - name: Dependency security scan
+        run: |
+          safety check --json --output safety-report.json || true
+
+  # Tenet 6: The compiler is the final arbiter of truth
+  test-execution:
+    name: Test Execution & Verification
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pytest-mock
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Tenet 25: But manual verification is priceless
+      - name: Run unit tests
+        run: |
+          pytest tests/ -v --cov=vibe_coder --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+
+  # Tenet 15: Never commit compiler output to your codebase
+  # Tenet 16: Leave them in your CI workflow
+  build-package:
+    name: Build & Package
+    runs-on: ubuntu-latest
+    needs: [code-quality, test-execution]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Build package
+        run: |
+          pip install build twine
+          python -m build
+
+      - name: Test package installation
+        run: |
+          pip install dist/*.whl
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: vibe-coder-package
+          path: dist/
+          retention-days: 7
+
+  # Tenet 42: Automate everything
+  integration-test:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: build-package
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install package
+        run: |
+          pip install dist/*.whl
+
+      - name: Run integration tests
+        run: |
+          python -c "
+          from vibe_coder.core import VirtualVibeCoder
+          from vibe_coder.terminal import SudoTerminal
+          print('✓ Core modules imported successfully')
+          
+          # Test basic functionality
+          terminal = SudoTerminal()
+          stdout, stderr, code = terminal.execute_command('echo \"Vibe Coding\"')
+          assert 'Vibe Coding' in stdout
+          print('✓ Terminal execution working')
+          "
+
+  # Tenet 17: A script becomes a project when AI cannot fix it in one attempt
+  model-compatibility:
+    name: Model Compatibility Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          pip install langchain-community ollama
+
+      - name: Check Ollama model availability
+        run: |
+          python .github/scripts/check_model.py
+
+  # Tenet 9: Finetune the compiler, do not polish the code
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'  # Only run on scheduled builds
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run comprehensive security scan
+        run: |
+          docker run --rm -v $(pwd):/app shiftleft/scan scan --src /app --type python
+
+  # Tenet 13: Do not trust your AI service provider unless you are the provider itself
+  self-hosted-test:
+    name: Self-Hosted Environment Test
+    runs-on: [self-hosted, linux]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test in controlled environment
+        run: |
+          echo "Testing in self-hosted environment"
+          python -c "import platform; print(f'Platform: {platform.platform()}')"
