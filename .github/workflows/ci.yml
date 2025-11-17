@@ -52,9 +52,11 @@ jobs:
           safety check --json --output safety-report.json || true
 
   # Tenet 6: The compiler is the final arbiter of truth
+  # Update the test-execution job to depend on Coq verification
   test-execution:
     name: Test Execution & Verification
     runs-on: ubuntu-latest
+    needs: [code-quality, coq-design]  # Added coq-design dependency
     strategy:
       matrix:
         python-version: ['3.9', '3.10', '3.11']
@@ -201,3 +203,18 @@ jobs:
         run: |
           echo "Testing in self-hosted environment"
           python -c "import platform; print(f'Platform: {platform.platform()}')"
+
+  # Add to the jobs section
+  coq-design:
+    name: Coq Design Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify Coq specifications
+        run: |
+          cd design
+          coqc VibeCoder.v
+          echo "✅ Coq design verification passed"
+

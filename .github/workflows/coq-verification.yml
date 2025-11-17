@@ -1,0 +1,80 @@
+name: Coq Formal Verification
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly at 2 AM Sunday
+
+env:
+  COQ_VERSION: '8.17'
+
+jobs:
+  coq-verification:
+    name: Coq Design Verification
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Coq
+        uses: coq-community/setup-coq-action@v1
+        with:
+          coq_version: ${{ env.COQ_VERSION }}
+
+      - name: Verify Coq design files
+        run: |
+          cd design
+          coqc VibeCoder.v
+          echo "✅ Coq design verification passed"
+
+      - name: Run Coq tests
+        run: |
+          cd design
+          coqtop -load-vernac-source VibeCoder.v -test
+          echo "✅ Coq specification tests passed"
+
+      - name: Generate documentation
+        run: |
+          cd design
+          coqdoc -g VibeCoder.v
+          echo "📚 Coq documentation generated"
+
+      - name: Upload Coq artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coq-verification
+          path: |
+            design/*.vo
+            design/*.glob
+            design/*.html
+          retention-days: 30
+
+  coq-theorem-proving:
+    name: Theorem Proving
+    runs-on: ubuntu-latest
+    needs: coq-verification
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Coq
+        uses: coq-community/setup-coq-action@v1
+        with:
+          coq_version: ${{ env.COQ_VERSION }}
+
+      - name: Prove key theorems
+        run: |
+          cd design
+          # Test that our core theorems are provable
+          coqc -Q . VibeCoder VibeCoder.v
+          echo "✅ Key theorems proven"
+
+      - name: Run property-based verification
+        run: |
+          cd design
+          python ../.github/scripts/verify_coq_properties.py
