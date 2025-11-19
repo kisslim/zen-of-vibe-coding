@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Coq
-        uses: coq-community/setup-coq-action@v1
+        uses: rocq-community/docker-coq-action@v1.5.2
         with:
           coq_version: ${{ env.COQ_VERSION }}
 
