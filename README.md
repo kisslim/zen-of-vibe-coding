@@ -14,8 +14,8 @@ The following principles adapt the timeless wisdom of the Zen of Python for this
 ### Explicit is better than implicit, but verified is better than explicit.
 > Clearly stated code and prompts help both humans and AI understand intent. However, explicit instructions are not enough; the generated code must be verified through execution and testing to ensure it behaves as expected, catching errors that explicit instructions might have missed.
 
-### Simple is better than complex, but correct is better than simple.
-> Simplicity should be a key aim, as it often leads to more maintainable and understandable code. However, correctness is the non-negotiable foundation. A simple but incorrect solution is worse than a more complex one that works properly.
+### Simple is better than complex, but well-defined is better than simple.
+> Simplicity should be a key aim, as it often leads to more maintainable and understandable code. However, a well-defined problem with clear requirements and boundaries is more important than simplicity alone. A simple solution to the wrong problem provides no value, while a well-defined complex problem can be systematically solved and refined.
 
 ### Complex is better than complicated, but proven is better than complex.
 > Some problems are inherently complex and require sophisticated solutions. A "complex" solution can be well-structured and logical, whereas a "complicated" one is unnecessarily convoluted. When complexity is necessary, it should be backed by proofs or rigorous testing to ensure its reliability.
