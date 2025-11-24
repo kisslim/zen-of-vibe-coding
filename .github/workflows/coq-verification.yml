@@ -44,7 +44,7 @@ jobs:
           echo "📚 Coq documentation generated"
 
       - name: Upload Coq artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: coq-verification
           path: |
