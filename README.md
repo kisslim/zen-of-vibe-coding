@@ -222,4 +222,16 @@ The ultimate lesson is that these four are not separate. They are the essential 
 
 ### 50. And is it a good idea to touch existing code?
 
-*The conversation continues...*
+### 50. And is it a good idea to touch existing code?
+
+> This final tenet answers the oldest and most persistent question in software engineering with the nuanced wisdom of vibe coding: **It depends on the nature of your touch.**
+
+The act falls into three categories, governed by earlier principles:
+
+1.  **The Surgeon's Touch (Good):** You touch with a precise, verified purpose. You are guided by a failing test (Tenet 24), a formal proof of a needed correction (Tenet 23), or a clear, singular intent to fix a known bug or implement a proven requirement. Your "scalpel" is a focused prompt, and your success is validated by the compiler (Tenet 6). This is not just good; it is essential maintenance.
+
+2.  **The Archaeologist's Touch (Necessary):** You touch to understand. You probe the existing code not to change it, but to map its "grain" and learn its secrets. You use the AI to generate explanations, visualizations, and tests that reveal the system's intent and structure. This touch, governed by "thinking mode" (Tenet 7), must precede any significant change. You cannot vibe code effectively atop a foundation you do not comprehend.
+
+3.  **The Vandal's Touch (Disaster):** You touch without a verified hypothesis, driven by a vague sense of "improvement" or "refactoring." You apply AI-generated changes based on aesthetic preferences or incomplete understanding, violating the "pure function" of your AI (Tenet 8) and introducing unpredictable side effects. This is how "duplication" becomes "disaster" (Tenet 1), as you shatter the existing, coherent patterns the AI originally built.
+
+Therefore, the answer is not yes or no, but a mandate for a **disciplined touch**. Do not touch code until you can explicitly state the *provable problem* you are solving. Then, and only then, use the AI as your calibrated instrument to make the minimal, verified, and necessary intervention. The legacy system is a sleeping giant; wake it with purpose and respect, not with reckless pokes.
