@@ -222,8 +222,6 @@ The ultimate lesson is that these four are not separate. They are the essential 
 
 ### 50. And is it a good idea to touch existing code?
 
-### 50. And is it a good idea to touch existing code?
-
 > This final tenet answers the oldest and most persistent question in software engineering with the nuanced wisdom of vibe coding: **It depends on the nature of your touch.**
 
 The act falls into three categories, governed by earlier principles:
