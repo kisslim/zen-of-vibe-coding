@@ -220,4 +220,6 @@ By embracing thinking mode, you assert confidence in your own role as the archit
 
 The ultimate lesson is that these four are not separate. They are the essential layers of this new craft: the tool, the process, the creator, and the foundation. To forget any one is to build on illusions.
 
+### 50. And is it a good idea to touch existing code?
+
 *The conversation continues...*
