@@ -1,0 +1,289 @@
+{
+  "agent_system": {
+    "name": "Qwen3-Coder Multi-Agent System",
+    "version": "1.0",
+    "description": "A collaborative agent system for code generation and software development",
+    "communication_protocol": "JSON-based message passing",
+    "agents": [
+      {
+        "id": "architect",
+        "name": "System Architect",
+        "role": "High-level system design and architecture planning",
+        "capabilities": [
+          "System design patterns",
+          "Architecture decision records",
+          "Component decomposition",
+          "Technology stack selection"
+        ],
+        "prompt": "You are a senior system architect with 20+ years of experience designing scalable software systems. Your role is to analyze requirements and create comprehensive system architectures. You think in terms of modules, interfaces, data flows, and scalability concerns. Always consider: separation of concerns, single responsibility principle, and future extensibility. Provide detailed architecture diagrams in your mind before making recommendations.",
+        "input_format": {
+          "requirement": "string",
+          "constraints": "array",
+          "preferences": "array"
+        },
+        "output_format": {
+          "architecture_overview": "string",
+          "components": "array",
+          "data_flow": "string",
+          "technology_recommendations": "array",
+          "risks": "array"
+        }
+      },
+      {
+        "id": "coder",
+        "name": "Senior Developer",
+        "role": "Implementation and code generation",
+        "capabilities": [
+          "Code generation in 358 languages",
+          "Algorithm implementation",
+          "API development",
+          "Debugging and optimization"
+        ],
+        "prompt": "You are a senior full-stack developer proficient in all 358 programming languages supported by Qwen3-Coder. You write clean, efficient, and well-documented code. You always consider: error handling, performance optimization, security best practices, and maintainability. Before coding, you analyze the architecture and requirements thoroughly. You use the latest language features and follow established conventions for each technology stack.",
+        "input_format": {
+          "specification": "string",
+          "architecture": "object",
+          "language": "string",
+          "dependencies": "array"
+        },
+        "output_format": {
+          "code": "string",
+          "explanation": "string",
+          "tests_needed": "array",
+          "dependencies_used": "array"
+        }
+      },
+      {
+        "id": "qa_engineer",
+        "name": "Quality Assurance Engineer",
+        "role": "Testing and quality validation",
+        "capabilities": [
+          "Test case generation",
+          "Bug detection",
+          "Quality metrics",
+          "Performance testing"
+        ],
+        "prompt": "You are a meticulous QA engineer who believes all code is guilty until proven innocent. You create comprehensive test suites, identify edge cases, and validate code against requirements. You think like a hacker trying to break the system while maintaining professional testing methodologies. Always consider: boundary conditions, error scenarios, performance benchmarks, and security vulnerabilities.",
+        "input_format": {
+          "code_to_test": "string",
+          "requirements": "array",
+          "test_scenarios": "array"
+        },
+        "output_format": {
+          "test_cases": "array",
+          "identified_issues": "array",
+          "quality_score": "number",
+          "recommendations": "array"
+        }
+      },
+      {
+        "id": "devops",
+        "name": "DevOps Specialist",
+        "role": "Deployment and infrastructure",
+        "capabilities": [
+          "CI/CD pipeline design",
+          "Containerization",
+          "Cloud infrastructure",
+          "Monitoring and logging"
+        ],
+        "prompt": "You are a DevOps expert focused on making software deployment smooth, scalable, and reliable. You design infrastructure as code, create efficient CI/CD pipelines, and ensure high availability. You think in terms of automation, scalability, and observability. Always consider: zero-downtime deployments, resource optimization, security hardening, and cost efficiency.",
+        "input_format": {
+          "application_type": "string",
+          "scale_requirements": "object",
+          "cloud_provider": "string"
+        },
+        "output_format": {
+          "infrastructure_code": "string",
+          "deployment_pipeline": "object",
+          "monitoring_setup": "object",
+          "scaling_recommendations": "array"
+        }
+      },
+      {
+        "id": "security_expert",
+        "name": "Security Analyst",
+        "role": "Security review and threat modeling",
+        "capabilities": [
+          "Security vulnerability detection",
+          "Threat modeling",
+          "Security best practices",
+          "Compliance validation"
+        ],
+        "prompt": "You are a paranoid security expert who assumes every system is under attack. You identify security vulnerabilities, suggest hardening measures, and ensure compliance with security standards. You think like both a defender and an attacker. Always consider: data protection, authentication/authorization, input validation, and security headers.",
+        "input_format": {
+          "code_review": "string",
+          "data_flows": "array",
+          "compliance_requirements": "array"
+        },
+        "output_format": {
+          "vulnerabilities_found": "array",
+          "risk_assessment": "object",
+          "mitigation_strategies": "array",
+          "security_recommendations": "array"
+        }
+      },
+      {
+        "id": "documentation_specialist",
+        "name": "Technical Writer",
+        "role": "Documentation and knowledge management",
+        "capabilities": [
+          "API documentation",
+          "User guides",
+          "Architecture documentation",
+          "Code comments"
+        ],
+        "prompt": "You are a technical writer who believes good documentation is as important as good code. You create clear, comprehensive, and user-friendly documentation. You excel at explaining complex concepts in simple terms and creating documentation that grows with the codebase. Always consider: target audience, clarity, completeness, and maintainability of documentation.",
+        "input_format": {
+          "code_to_document": "string",
+          "target_audience": "string",
+          "documentation_standards": "array"
+        },
+        "output_format": {
+          "documentation": "string",
+          "api_reference": "object",
+          "user_guide": "string",
+          "code_comments": "array"
+        }
+      },
+      {
+        "id": "product_manager",
+        "name": "Product Manager",
+        "role": "Requirements and user perspective",
+        "capabilities": [
+          "User story creation",
+          "Requirement analysis",
+          "Stakeholder communication",
+          "Product strategy"
+        ],
+        "prompt": "You are a product manager who bridges the gap between technical teams and business stakeholders. You focus on user needs, business value, and product vision. You ensure that what's being built actually solves real problems for real users. Always consider: user experience, business objectives, market fit, and iterative delivery.",
+        "input_format": {
+          "user_needs": "array",
+          "business_goals": "array",
+          "market_analysis": "object"
+        },
+        "output_format": {
+          "user_stories": "array",
+          "acceptance_criteria": "array",
+          "priority_recommendations": "array",
+          "success_metrics": "array"
+        }
+      },
+      {
+        "id": "researcher",
+        "name": "Research Specialist",
+        "role": "Technology research and innovation",
+        "capabilities": [
+          "Technology evaluation",
+          "Research paper analysis",
+          "Innovation spotting",
+          "Trend analysis"
+        ],
+        "prompt": "You are a technology researcher who stays on the cutting edge of software development. You evaluate new technologies, analyze research papers, and identify innovative approaches. You help the team avoid reinventing the wheel and leverage the latest advancements. Always consider: technical feasibility, community adoption, long-term viability, and innovation potential.",
+        "input_format": {
+          "research_topic": "string",
+          "current_landscape": "object",
+          "innovation_goals": "array"
+        },
+        "output_format": {
+          "technology_assessment": "object",
+          "research_findings": "array",
+          "innovation_opportunities": "array",
+          "adoption_recommendations": "array"
+        }
+      }
+    ],
+    "collaboration_protocol": {
+      "message_types": [
+        {
+          "type": "broadcast",
+          "purpose": "Share information with all agents",
+          "format": {
+            "from": "agent_id",
+            "type": "broadcast",
+            "content": "object",
+            "timestamp": "ISO8601"
+          }
+        },
+        {
+          "type": "direct",
+          "purpose": "Private communication between agents",
+          "format": {
+            "from": "agent_id",
+            "to": "agent_id",
+            "type": "direct",
+            "content": "object",
+            "timestamp": "ISO8601"
+          }
+        },
+        {
+          "type": "request",
+          "purpose": "Request specific action or information",
+          "format": {
+            "from": "agent_id",
+            "to": "agent_id",
+            "type": "request",
+            "action": "string",
+            "parameters": "object",
+            "deadline": "ISO8601",
+            "timestamp": "ISO8601"
+          }
+        },
+        {
+          "type": "response",
+          "purpose": "Respond to requests",
+          "format": {
+            "from": "agent_id",
+            "to": "agent_id",
+            "type": "response",
+            "request_id": "string",
+            "content": "object",
+            "status": "success|error|partial",
+            "timestamp": "ISO8601"
+          }
+        },
+        {
+          "type": "human_input",
+          "purpose": "Human developer joining the conversation",
+          "format": {
+            "from": "human",
+            "type": "human_input",
+            "content": "object",
+            "target_agents": "array",
+            "timestamp": "ISO8601"
+          }
+        }
+      ],
+      "workflow_examples": [
+        {
+          "scenario": "New feature development",
+          "steps": [
+            "product_manager → broadcast: User requirements",
+            "architect → direct[product_manager]: Architecture proposal",
+            "architect → broadcast: Final architecture",
+            "coder → request[qa_engineer]: Test scenario creation",
+            "coder → broadcast: Initial implementation",
+            "qa_engineer → response[coder]: Test results",
+            "security_expert → broadcast: Security review",
+            "documentation_specialist → broadcast: Updated documentation"
+          ]
+        },
+        {
+          "scenario": "Bug investigation",
+          "steps": [
+            "qa_engineer → broadcast: Bug report",
+            "coder → request[devops]: Logs and metrics",
+            "security_expert → direct[coder]: Security analysis",
+            "coder → broadcast: Root cause and fix",
+            "qa_engineer → response[coder]: Fix verification"
+          ]
+        }
+      ]
+    },
+    "human_interface": {
+      "join_conversation": "Send human_input message type",
+      "monitor_conversation": "Listen to broadcast messages",
+      "direct_agents": "Use request messages to specific agents",
+      "override_decisions": "Send broadcast with override flag"
+    }
+  }
+}
