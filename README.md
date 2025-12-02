@@ -222,8 +222,6 @@ The ultimate lesson is that these four are not separate. They are the essential 
 
 ### 50. And is it a good idea to touch existing code? Which style do you prefer, top-down designing or bottom-up scaffolding?
 
-### 50. And is it a good idea to touch existing code? Which style do you prefer, top-down designing or bottom-up scaffolding?
-
 > To touch existing code is inevitable, but to do so without a plan is to invite chaos. Therefore, I prefer a **hybrid approach**: **Top-Down for vision, Bottom-Up for validation.**
 
 *   **Top-Down Designing** is where you begin. It is the act of "thinking mode" (Tenet 7) made concrete. You start with the novel idea (Tenet 26), define it with the rigor of Coq if you can (Tenet 23), and craft prompts that describe the system's purpose, boundaries, and interfaces. This is your map. It prevents you from getting lost in implementation weeds and ensures every component justifies its existence.
